@@ -1,0 +1,45 @@
+{
+  "name": "mathem-cli",
+  "version": "0.0.1",
+  "description": "Unofficial automation-first CLI for Mathem Sweden.",
+  "keywords": [
+    "cli",
+    "grocery",
+    "mathem",
+    "sweden"
+  ],
+  "homepage": "https://github.com/onmax/mathem-cli#readme",
+  "bugs": {
+    "url": "https://github.com/onmax/mathem-cli/issues"
+  },
+  "author": "onmax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/mathem-cli.git"
+  },
+  "bin": {
+    "mathem": "dist/mathem.mjs"
+  },
+  "files": [
+    "dist",
+    "skills"
+  ],
+  "type": "module",
+  "scripts": {
+    "prepack": "vp pack",
+    "release": "npm version patch -m \"chore: release v%s\" && git push --follow-tags"
+  },
+  "dependencies": {
+    "cac": "^7.0.0",
+    "playwright-core": "^1.62.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.18.0"
+}

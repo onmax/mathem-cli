@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: voidzero-dev/setup-vp@v1.15.0
+        with:
+          node-version: 24
+          cache: true
+          run-install: false
+      - run: vp install --frozen-lockfile
+      - run: vp check
+      - run: vp pack
+      - run: vp test run
+      - run: |
+          archive="$(pwd)/mathem-cli.tgz"
+          vp pm pack --out "$archive"
+          tar -tzf "$archive" | grep -qx package/dist/mathem.mjs
+          npx --yes --package "$archive" mathem --help

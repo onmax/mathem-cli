@@ -1,0 +1,10 @@
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.6
+  vite-plus: 0.2.6
+minimumReleaseAgeExclude:
+  - playwright-core@1.62.1
+overrides:
+  vite: "catalog:"
+peerDependencyRules:
+  allowedVersions:
+    vite: "*"
