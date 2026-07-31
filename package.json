@@ -27,7 +27,7 @@
   "type": "module",
   "scripts": {
     "prepack": "vp pack",
-    "release": "npm version patch -m \"chore: release v%s\" && git push --follow-tags"
+    "release": "test \"$(git branch --show-current)\" = main && git fetch origin main && test \"$(git rev-parse HEAD)\" = \"$(git rev-parse origin/main)\" && release_tag=$(npm version patch -m \"chore: release v%s\") && git push --atomic origin main \"$release_tag\""
   },
   "dependencies": {
     "cac": "^7.0.0",
